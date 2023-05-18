@@ -3,6 +3,7 @@ package com.javarush.cryptanalyzer.maul.repository;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
+import java.nio.file.Path;
 
 import static com.javarush.cryptanalyzer.maul.constants.DefaultTextPath.*;
 
