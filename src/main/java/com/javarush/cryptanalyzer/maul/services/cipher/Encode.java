@@ -17,7 +17,7 @@ public class Encode implements Function {
             String startText = new StartText(parameters[1], isEncoded).getStartText();
             Key key = new Key(parameters[2]);
             CaesarCipher cipher = new CaesarCipher();
-            String plaintext = cipher.cipher(startText, key, true);
+            String plaintext = cipher.cipher(startText, key, isEncoded);
             FileWriterService.writeToFile(plaintext, isEncoded);
             return new Result(ResultCode.OK,key);
         }
