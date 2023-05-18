@@ -22,7 +22,6 @@ public class ConsoleView implements View {
                 default -> onThirdMode(scanner, answers);
             }
         } catch (RuntimeException e) {
-            //TODO  exception
             e.printStackTrace();
             return null;
         }
@@ -38,7 +37,7 @@ public class ConsoleView implements View {
     }
 
     private void onSecondMode(Scanner scanner, String[] answers) {
-        String[] secondModeQuestions = {USER_TEXT, KEY};
+        String[] secondModeQuestions = {DEFAULT_TEXT, KEY};
         for (int i = 0; i < secondModeQuestions.length; i++) {
             System.out.println(secondModeQuestions[i] + " ");
             answers[i + 1] = scanner.nextLine();
@@ -46,7 +45,7 @@ public class ConsoleView implements View {
     }
 
     private void onThirdMode(Scanner scanner, String[] answers) {
-        System.out.println(USER_TEXT);
+        System.out.println(DEFAULT_TEXT);
         answers[1] = scanner.nextLine();
     }
 
@@ -57,7 +56,7 @@ public class ConsoleView implements View {
     public void printResult(Result result) {
         switch (result.getResultCode()) {
             case OK ->
-                    System.out.println(SUCCESS + "\n" + result.getResultText() + "\n" + "Your key: " + result.getKey());
+                    System.out.println(SUCCESS + "\n" + "Your key: " + result.getKey());
             case ERROR -> System.out.println(EXCEPTION + result.getAppException().getMessage());
         }
     }

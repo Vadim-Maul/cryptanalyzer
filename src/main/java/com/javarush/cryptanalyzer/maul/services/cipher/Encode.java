@@ -13,17 +13,17 @@ public class Encode implements Function {
     @Override
     public Result execute(String[] parameters) {
         try{
-            String startText = new StartText(parameters[1]).getStartText();
+            Boolean isEncoded = true;
+            String startText = new StartText(parameters[1], isEncoded).getStartText();
             Key key = new Key(parameters[2]);
             CaesarCipher cipher = new CaesarCipher();
             String plaintext = cipher.cipher(startText, key, true);
-            return new Result(ResultCode.OK, new ResultText(plaintext), key);
+            FileWriterService.writeToFile(plaintext, isEncoded);
+            return new Result(ResultCode.OK,key);
         }
         catch (Exception e){
             return new Result(ResultCode.ERROR, new AppException("Encode finished with exception: ", e));
         }
     }
-
-
 
 }
