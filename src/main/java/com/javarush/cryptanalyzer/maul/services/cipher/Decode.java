@@ -19,7 +19,7 @@ public class Decode implements Function {
             String plaintext;
             Key key = new Key(parameters[2]);
             CaesarCipher cipher = new CaesarCipher();
-            plaintext = cipher.cipher(startText, key, false);
+            plaintext = cipher.cipher(startText, key, isEncoded);
             FileWriterService.writeToFile(plaintext, isEncoded);
             return new Result(ResultCode.OK, key);
         } catch (Exception e) {
