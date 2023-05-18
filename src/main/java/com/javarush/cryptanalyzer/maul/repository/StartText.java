@@ -19,32 +19,31 @@ public class StartText {
         return this.startText.isEmpty();
     }
 
-
-    public String getStartText() {
+ public String getStartText() {
         if(this.isEncoded){
             if(isStartTextDefault()){
-                try {
-                    return Files.readString(DEFAULT_TEXT_PATH_INPUT, StandardCharsets.UTF_8);
-                }catch (IOException e){
-                    e.printStackTrace();
-                }
+              return readTextFromFile(DEFAULT_TEXT_PATH_INPUT);
             }
             else {
                 return this.startText;
             }
         }else {
             if (isStartTextDefault()){
-                try {
-                    return Files.readString(DEFAULT_TEXT_PATH_ENCODED, StandardCharsets.UTF_8);
-                }catch (IOException e){
-                    e.printStackTrace();
-                }
+              return readTextFromFile(DEFAULT_TEXT_PATH_ENCODED);
             }
             else {
                 return this.startText;
             }
         }
-     return null;
+    }
+
+    private String readTextFromFile(Path path){
+        try {
+            return Files.readString(path, StandardCharsets.UTF_8);
+        }catch (IOException e){
+            e.printStackTrace();
+            return null;
+        }
     }
 
     public String toString() {
