@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 
 
 public class WordChecker {
-    private static final String PATTERN = "[А-ЯЁ]\\s?[а-яё]+,?\\s[а-яё]+\\s.*\\.";
+    private static final String PATTERN = "[А-ЯЁ]\s?[а-яё]{5},?\s[а-яё]{2,8},?\s[а-яё]{2,8},?\s[а-яё]{2,8},?\s.*[\.!\?]";
 
 
     public static boolean isPlaintext(String text) {
